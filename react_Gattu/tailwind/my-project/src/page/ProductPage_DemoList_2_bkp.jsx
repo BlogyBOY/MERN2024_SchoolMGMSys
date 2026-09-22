@@ -9,7 +9,8 @@ const eProduct = {
   "item_name": "JBLA",
   "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKLJeWGC9JFrqbn4N43yEk1Zpeu117k1jIJUmf_l4JK7S0CsJLN4L_N3WS&s=10",
   "pice_rang": "30000-40000"
-}
+};
+
 const nProduct = {
   "category": "Computer",
   "item_name": "LenovoB",
@@ -36,61 +37,91 @@ const gProduct = {
 const ProductPage_DemoList2BKP = () => {
 
 
-const [DataList, setDataList] = useState([]);
+
+  const [DataList, setDataList] = useState([]);
 
 
 
-function abd(ddd) {
+  function updateVariable() {
+    alert("funcation has been called :updateVariable ");
+    setDataList(gProduct);
+    setDataList(nProduct);
+    setDataList(eProduct);
+    // setDataList(eProduct);
+    // setDataList(eProduct);
+    // DataList[0]= eProduct;
+    // DataList[1]= gProduct;
+    // DataList[2]= mProduct;
+
+    // setDataList(ddd);
+  }
+
+  const [MyList, setMyList] = useState([]);
+  const ShowData =(index, value) => {
 
 
-  setDataList(eProduct);
-  setDataList(eProduct);
-  setDataList(eProduct);
-  setDataList(eProduct);
-  setDataList(eProduct);
-  // DataList[0]= eProduct;
-  // DataList[1]= gProduct;
-  // DataList[2]= mProduct;
+  };
+
+  function updateMy_Variable() {
+
+    setMyList(DataList);
+  }
+
+
+  useEffect(() => {
+    alert("useEffect has been called :updateVariable ");
+
+    updateVariable();
+    updateMy_Variable();
+  }, []);
 
 
 
-  // setDataList(ddd);
-}
-
-useEffect(() => {
-  abd();
-}, []);
-
-// #####################################
-/*
-usestae() prodlist, setprodlist ={
-<ProductCard category={setprodlist.category} item_name={ProdList.eProduct.item_name} image={ProdList.eProduct.image} pice_rang={ProdList.eProduct.pice_rang}/>
-}
-
-
-
-// #####################################
-
-*/
+  // #####################################
+  /*
+  usestae() prodlist, setprodlist ={
+  <ProductCard category={setprodlist.category} item_name={ProdList.eProduct.item_name} image={ProdList.eProduct.image} pice_rang={ProdList.eProduct.pice_rang}/>
+  }
+  
+  
+  
+  // #####################################
+  
+  */
 
 
 
 
   return (
+
     <div className='flex flex-row'>
+      <div>
+        <h1>ProductPage_Demo List -2 BKP</h1>
+      </div>
+
 
       {/* <h1 className='text-4xl font-bold'>Product Demo List</h1>
 <ProductCard category={ProdList.eProduct.category} item_name={ProdList.eProduct.item_name} image={ProdList.eProduct.image} pice_rang={ProdList.eProduct.pice_rang}/> */}
       {/* <ProductCard category={ProdList.nProduct.category} item_name={ProdList.nProduct.item_name} image={ProdList.nProduct.image} pice_rang={ProdList.nProduct.pice_rang}/>
 <ProductCard category={ProdList.gProduct.category} item_name={ProdList.gProduct.item_name} image={ProdList.gProduct.image} pice_rang={ProdList.gProduct.pice_rang}/> */}
 
-      {DataList.map ((item, index) => (
-        <div key={index}>
+      {
+
+
+        <div>
           <div>
-            <ProductCard category={setDataList.item.category} item_name={setDataList.item.item_name} image={setDataList.item.image} pice_rang={setDataList.item.pice_rang} />
+            <h2>
+
+              {alert("data list values : " + JSON.stringify(MyList))}
+              {/* {alert("values of setDataList  : " + JSON.stringify(setDataList))} */}
+
+              hgjjgj
+            </h2>
+
+            {/* <ProductCard category={DataList.category} item_name={setDataList.item.item_name} image={setDataList.item.image} pice_rang={setDataList.item.pice_rang} /> */}
           </div>
         </div>
-      ))}
+      }
 
 
 
