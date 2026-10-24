@@ -29,6 +29,12 @@ const Nav = () => {
                             Book Appointment
                         </Link>
 
+
+                        <Link to="/appointmentbooker_0" className='text-black font-bold hover:text-blue-500'>
+                            Appointment Booker
+                        </Link>
+                        
+
                     </div>
                     <div className='flex gap-6 mr-5'>
                         <span className='text-black hover:text-bold hover:text-bold'><CiSearch /></span>
