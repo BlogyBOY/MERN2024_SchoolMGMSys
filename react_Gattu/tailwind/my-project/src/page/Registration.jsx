@@ -1,10 +1,6 @@
-// import { Input } from 'postcss';
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Input from '../components/Input';
-import CellotapG from '../components/Cellotap';
-import DgfG from '../components/Cellotap';
-
 
 const Registration = () => {
   const[name, setName]=useState("");
@@ -12,7 +8,7 @@ const Registration = () => {
   const[contact,steContact]=useState("");
   const[password, setPassword]=useState("");
 
-// const navigate = useNavigate();
+ const navigate = useNavigate();
 
 
   //function
@@ -42,18 +38,34 @@ if(name===""||email===""
   return alert ("input value is blank")
 }
 
-if(name.length>=3||
+if(name.length <=3||
   !email.includes("@")||
   !email.includes(".com")||
-  contact.length==10||
-  password.length>=8
+  contact.length !==10||
+  password.length <=8
 )
 {
   return alert ("input value is wrong");
 }
+
+
 // fetch
+
+fetch("",{
+  method:"post",
+  headers:{"Content-Type": "application/json"},
+  body: JSON.stringify({
+    name:name,
+    email:email,
+    contact:contact,
+    password:password,
+  }),
+})
+.then((response)=>response.json())
+.then((data)=>console.log(data))
+.catch((error)=>console.log(error));
 //navigate
-// navigate("/Login")
+ navigate("/Login")
   }
   return (
     <div className='h-screen bg-gray-100 flex items-center justify-center px-7'>

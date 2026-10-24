@@ -5,6 +5,7 @@ const Login = () => {
 
     const[email, setEmail]=useState("");
     const[password, setPassword]=useState("");
+    const [token, setToken]= useState("");
 
     const handleChangeEmail = (e)=>{
         setEmail(e.target.value)
@@ -17,7 +18,7 @@ const Login = () => {
     const navigate = useNavigate();
 
     const handleSubmit = (e)=>{
-        e.preventDefault()
+        e.preventDefault();
 
         //if input is blank
         if (email===""||password==="")
@@ -25,9 +26,29 @@ const Login = () => {
             return alert("please enter email and password")
         }
         //fetch
+        fetch("",{
+             method:"post",
+  headers:{"Content-Type": "application/json"},
+  body: JSON.stringify({
+    email:email,
+    password:password,
+  }),
+})
+.then((response)=>response.json())
+.then((data)=>setToken(data.token))
+.catch((error)=>console.log(error));
+       
+//navigate
 
+if (!token)
+    {
+    navigate("/login");
+}
+else
+    {
         navigate("/UserDashboard")
     }
+}
   return (
     <div className='h-screen bg-gray-100 flex items-center justify-center px-7'>
         <div className='border border-black px-40 py-60'>

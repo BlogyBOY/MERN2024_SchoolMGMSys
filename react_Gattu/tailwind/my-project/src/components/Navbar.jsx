@@ -1,35 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+// import { BsCartFill } from "react-icons/bs";
+// import { FaUser } from "react-icons/fa";
+
 
 const Navbar = () => {
   return (
-   <>
-   <nav className='bg-red-300 px-6 py-4 flex item-cenetr justify-between'>
-    <div className='text-2xl font-bold text-red-800'>Electronic shop</div>
-    <div className='flex items-centergap-6'>
-      <div className='flex gap-6 mr-72'>
-        <Link to = "/" className='text-red-800 font-bold hover:text-purple-500'>  
-        Catalogue
-        </Link>
-        <Link to = "/info" className='text-red-800 font-bold hover:text-purple-500'>
-        info
-        </Link>
-         <Link to = "/about-us" className='text-red-800 font-bold hover:text-purple-500'>
-        About-us
-        </Link>
+    <>
+      <nav className='bg-black px-6 py-4 flex item-cenetr justify-between'>
+        <div className=' text-orange-400 flex flex-col'><h1 className='text-2xl font-bold'>HomeNest</h1>
+          <p className='text-sm'>Better Home.Happier you.</p></div>
+        <div className='flex items-centergap-6'>
+          <div className='flex gap-6 mr-72'>
+            <Link to="/catalogue" className='text-orange-400 font-bold hover:text-orange-700'>
+              Catalogue
+            </Link>
+            <Link to="/service" className='text-orange-400 font-bold hover:text-orange-700'>
+              Services
+            </Link>
+            <Link to="/about" className='text-orange-400 font-bold hover:text-orange-700'>
+              About
+            </Link>
 
 
-      </div>
+          </div>
 
-      <div className='flex gap-6 mr-5'>
-        <Link to = "/Cart">
-        
-        </Link>
-      </div>
+          {/* <img src="../assets/my-cart.png"></img> */}
 
-    </div>
-   </nav>
-   </>
+          <div className='flex gap-6 mr-5'>
+            <Link to="/cart">
+              <BsCartFill className="text-orange-400 font-bold hover:text-orange-700" size={22} />
+              <img src="../assets/my-cart.png"></img>
+            </Link>
+
+            <Link to="/profile">
+              <FaUser className="text-orange-400 font-bold hover:text-orange-700" size={22} />
+            </Link>
+          </div>
+
+        </div>
+      </nav>
+    </>
 
 
   )
