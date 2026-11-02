@@ -18,6 +18,7 @@ import AppointmentBooker_3 from './pages/AppointmentBooker/AppointmentBooker_3'
 // import ProductDetail from './page/ProductDetail'
 // import Navbar from './components/Nav'
 import Nav from './components/Nav'
+import Newappointment from './pages/AppointmentBooker/Newappointment'
 const App = () => {
   return (
     <div>
@@ -32,6 +33,7 @@ const App = () => {
 
 
          <Route path='/bookappointment' element={<BookAppointment />} />
+         <Route path='/newappointment' element={<Newappointment />} />
          <Route path='/appointmentbooker_0' element={<AppointmentBooker_0 />} />
          <Route path='/appointmentbooker_1' element={<AppointmentBooker_1 />} />
          <Route path='/appointmentbooker_2' element={<AppointmentBooker_2 />} /> 

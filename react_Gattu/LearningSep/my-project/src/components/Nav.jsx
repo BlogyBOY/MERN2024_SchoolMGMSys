@@ -27,6 +27,10 @@ const Nav = () => {
                         </Link>
                           <Link to="/bookappointment" className='text-black font-bold hover:text-blue-500'>
                             Book Appointment
+                        </Link> 
+
+                         <Link to="/newappointment" className='text-black font-bold hover:text-blue-500'>
+                            New Appointment
                         </Link>
 
 
