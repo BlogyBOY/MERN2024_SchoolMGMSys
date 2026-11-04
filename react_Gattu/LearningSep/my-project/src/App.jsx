@@ -19,6 +19,7 @@ import AppointmentBooker_3 from './pages/AppointmentBooker/AppointmentBooker_3'
 // import Navbar from './components/Nav'
 import Nav from './components/Nav'
 import Newappointment from './pages/AppointmentBooker/Newappointment'
+import Hairbelt from './pages/AppointmentBooker/Hairbelt'
 const App = () => {
   return (
     <div>
@@ -38,7 +39,7 @@ const App = () => {
          <Route path='/appointmentbooker_1' element={<AppointmentBooker_1 />} />
          <Route path='/appointmentbooker_2' element={<AppointmentBooker_2 />} /> 
          <Route path='/appointmentbooker_3' element={<AppointmentBooker_3 />} />
-
+<Route path='/hairbelt' element={<Hairbelt/>}/>
          
       </Routes>
       {/* <BrowserRouter>

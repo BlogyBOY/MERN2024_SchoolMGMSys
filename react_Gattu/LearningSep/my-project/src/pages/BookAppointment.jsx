@@ -1,40 +1,69 @@
 import React, { useState } from 'react'
 
 const BookAppointment = () => {
-  const [pname, setPname] = useState("");
-  const [g_pname, setg_Pname] = useState("");
-  const [num, setNum] = useState("");
-  const [doc, setDoc] = useState("");
-const [g_doc, setg_Doc] = useState("");
-  const handalselect =(e)=>{
-    setDoc(e.target.value);
-   
+const [appoint, setAppoint] = useState([]);
+
+  const [patientName, setPatientName] = useState("");
+  const [patientNum, setPatientNum] = useState("");
+  const [doctorName, setDoctorName] = useState("");
+  const [appointmentDate, setAppointmentDate] = useState("");
+  const [appointmentTime, setAppointmentTime] = useState("");
+ 
+
+  const handalChangePatientName = (e) => {
+    setPatientName(e.target.value)
+
+// alert("pn:"+ patientName );
+
   }
-  const handalChangePname = (e) => {
-    // alert("#begain- handalChangePname");
-// alert("ss");
-// alert(e.target.value);
-// alert("dd");
-setPname(e.target.value);
-    // alert("#function handalChangePname - completed");
-  };
-  const handalChangeNum = (e) => {
-    setNum(e.target.value);
+
+  const handalChangePatientNum = (e) => {
+    setPatientNum(e.target.value)
+
+  }
+
+  const handalChangeDoctorName = (e) => {
+    setDoctorName(e.target.value)
+
+  }
+
+  const handalChangeAppointmentDate =(e) =>{
+    setAppointmentDate(e.target.value)
+  }
+  
+  const handalChangeAppointmentTime =(e) =>{
+    setAppointmentTime(e.target.value)
+  }
+
+  const handalSubmit =(e)=>{
+    e.preventDefault()
+
+    const newAppoint = {
+      patientName : patientName,
+      patientNum : patientNum,
+      doctorName :doctorName,
+      appointmentDate : appointmentDate,
+      appointmentTime :appointmentTime
+    }
+     
+    setAppoint([...appoint, newAppoint]); 
+    
+    setDoctorName("");
+    setPatientName("");
+    setPatientNum("");
+   setAppointmentDate("");
+setAppointmentTime("");
+
+ 
+  }
+  const handleClear =(e)=>{
+     setDoctorName("");
+    setPatientName("");
+    setPatientNum("");
+   setAppointmentDate("");
+setAppointmentTime("");
   };
 
-  const handalSubmit = (e) => {
-    // alert("form submitted- handalSubmit");
-    e.preventDefault();
-    // alert("function handalSubmit - completed");
-
-    // alert("pname:  " + pname);
-    // alert("g_pname:  " + g_pname);
-    //g_pname= pname;
-    setg_Pname(pname)
-     alert("doc:" + doc);
-    alert("g_doc:" + g_doc);
-    setg_Doc(doc)
-  }
   return (
     <div className='text-center'>
       <h1 className='text-4xl bold text-red-700'>This is Book Appointment page</h1>
@@ -46,34 +75,37 @@ setPname(e.target.value);
           <label className='text-xl bold'>patient info</label> <br /><br />
           <input type="text"
             placeholder='Patient name'
+            value={patientName}
             // onPointerLeave={handalChangePname}
             className='h-8 w-96 border border-gray-600'
-          onChange={handalChangePname}
+            onChange={handalChangePatientName}
 
           />
 
           <br /><br />
           <input type="number"
             placeholder='mobile no.'
+          value={patientNum}
             className='h-8 w-96 border border-gray-600'
-            onChange={handalChangeNum} />
+            onChange={handalChangePatientNum} />
           <br></br><br />
           <label className='text-xl bold'>Doctor info</label> <br />
-          <select className='h-8 w-96' onSelect={handalselect}>
-            <option value='-1'>
+          <select className='h-8 w-96'
+          value={doctorName}  onChange={handalChangeDoctorName}>
+            <option value=" ">
               -- select --
             </option>
 
-            <option value='4'>
+            <option value='hema'>
               hema
             </option>
-            <option value='1'>
+            <option value='rima'>
               rima
             </option>
-            <option value='2'>
+            <option value='shila'>
               shila
             </option>
-            <option value='3'>
+            <option value='jaya'>
               jaya
             </option>
 
@@ -81,44 +113,75 @@ setPname(e.target.value);
           <br></br>
 
           <label className='text-xl bold'>Date </label> <br /><br />
-          <input type="text" placeholder='date and time' value="10 june 2026" className='h-8 w-72 border border-gray-600' />
+          <input type="date" placeholder='date and time' value={appointmentDate} onChange={handalChangeAppointmentDate} className='h-8 w-72 border border-gray-600' />
           <br></br><br />
           <label className='text-xl bold'>Time </label> <br /><br />
-          <input type="text" placeholder='date and time' value="10:00 AM" className='h-8 w-72 border border-gray-600' />
+          <input type="time" placeholder='date and time' value={appointmentTime} onChange={handalChangeAppointmentTime} className='h-8 w-72 border border-gray-600' />
           <br></br><br />
 
-          <button className='h-16 w-60 bg-blue-600 text-white'>Book Appointment</button>
+          <button className='h-16 w-60 bg-blue-600 text-white'>Book Appointment</button> <br /><br />
 
+<button onClick={handleClear} className='h-16 w-60 bg-blue-600 text-white'>Clear Form</button>
 
           <br></br>
           <br></br>
         </form>
       </div>
-      grid
+      
       <div >
-        <table >
-          <thead>
-            <tr className='flex justify-between gap-20 border border-gray-700 bg-gray-200'>
-              <th>ID</th>
-              <th>Patient Name</th>
-              <th>Doctor</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Booking </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>{g_pname}</td>
-              <td>{g_doc}</td>
-            </tr>
-          </tbody>
+<table >
+  <thead >
+    <tr className='flex justify-between gap-56'>
+      <th>Patient Name</th>
+      <th>Patient num</th>
+      <th>Doctor Name</th>
+      <th>Appointment Date</th>
+      <th>Appointment time</th>
+    </tr>
+  </thead>
+   <tbody>
+     {appoint.map((item, index) => (
 
-        </table>
+    
+     <tr key={index} className='flex justify-between gap-56'>
+      <td>{item.patientName}</td>
+      <td>{item.patientNum}</td>
+      <td>{item.doctorName}</td>
+      <td>{item.appointmentDate}</td>
+      <td>{item.appointmentTime}</td>
+    </tr>
+     ))}
+</tbody>
+
+</table>
+
       </div>
-
-    </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      </div>
   )
 }
 

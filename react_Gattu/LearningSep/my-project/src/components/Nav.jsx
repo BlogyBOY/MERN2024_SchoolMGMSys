@@ -33,6 +33,10 @@ const Nav = () => {
                             New Appointment
                         </Link>
 
+                         <Link to="/hairbelt" className='text-black font-bold hover:text-blue-500'>
+                            Hairbelt
+                        </Link>
+
 
                         <Link to="/appointmentbooker_0" className='text-black font-bold hover:text-blue-500'>
                             Appointment Booker
